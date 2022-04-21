@@ -1,0 +1,54 @@
+<?php
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\widgets\Pjax;
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\BarangSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = Yii::t('app', 'Barangs');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="barang-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a(Yii::t('app', 'Create Barang'), ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?php Pjax::begin(); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'jenis',
+            'judul',
+            'harga',
+            'keterangan:ntext',
+            //'created_at',
+            //'updated_at',
+            //'pengiklan',
+            //'is_deleted',
+            //'published',
+            //'ukuran',
+            //'alamat',
+            //'jumlah',
+            //'mobil',
+            //'sopir',
+            //'no_hp',
+            //'no_wa',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+    <?php Pjax::end(); ?>
+
+</div>
